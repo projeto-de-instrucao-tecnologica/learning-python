@@ -11,6 +11,9 @@ You can contribute to this repository in the following ways:
 - Updating or Fixing lists and questions;
 - Proposing useful changes, automations or corrections to this repository structure.
 
+Be creative and playful in asking questions that draw attention positively.
+Eg.: Create a function that receives a list of Pokemon from a Trainer and returns the amount of Pokemon he has.
+
 ## Structure
 
 WIP
@@ -19,17 +22,17 @@ WIP
 
 Use these icons at the beginning of your commit phrase to help verify the type of change you make:
 
-:bulb: quando adicionar nova funcionalidade
-:repeat: quando alguma alteração for feita
-:cool: quando melhorias de formato/estrutura do código
-:racehorse: quando melhorar o desempenho
-:non-potable_water: quando resolver memory leaks.
-:memo: quando escrever documentação
-:bug: quando consertar um problema
-:fire: quando remover código ou arquivos
-:green_heart: quando consertar problemas de Integração Contínua
-:white_check_mark: quando adicionar testes
-:lock: quando lidar com segurança
-:arrow_up: quando realizar o upgrade de dependências
-:arrow_down: quando realizar downgrade de dependências
-:minidisc: quando realizar backup de dados
+- :bulb: When adding something new (questions, lists or features)
+- :repeat: When any changes are made
+- :cool: When code format/structure improvements
+- :racehorse: When improving performance
+- :non-potable_water: When resolving memory leaks
+- :memo: When writing documentation
+- :bug: When fixing a problem
+- :fire: When removing code or files
+- :green_heart: When fixing Continuous Integration issues
+- :White_check_mark: When adding tests
+- :lock: When dealing with security
+- :arrow_up: When upgrading dependencies
+- :arrow_down: When downgrading dependencies
+- :minidisc: When backing up data
