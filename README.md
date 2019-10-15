@@ -14,11 +14,27 @@ You can contribute to this repository in the following ways:
 Be creative and playful in asking questions that draw attention positively.
 Eg.: Create a function that receives a list of Pokemon from a Trainer and returns the amount of Pokemon he has.
 
-## Structure
+Lists and questions must be self-correcting, that is, they must contain assertations to verify that the implementation returns the correct values. See [list_template_basic](https://github.com/projeto-de-instrucao-tecnologica/learning_python/blob/master/lists/list_template_basic.ipynb).
 
-WIP
+You can create questions and lists in English or Portuguese, but we prefer it to be in English (We accept Pull Requests for English translation :blush:).
 
-## Commits Icons
+### Structure
+
+For **Lists** and **questions** respectively, do you have to create one with this name pattern:
+
+- list_<LIST_NAME>_<LIST_DIFFICULTY>.ipynb
+
+- question_<QUESTION_NAME>_<QUESTION_DIFFICULTY>.ipynb
+
+The difficulty of lists and questions should be defined among these options:
+
+- baby
+- basic
+- intermediary
+- advanced
+- master
+
+### Commits Icons
 
 Use these icons at the beginning of your commit phrase to help verify the type of change you make:
 
@@ -36,3 +52,7 @@ Use these icons at the beginning of your commit phrase to help verify the type o
 - :arrow_up: When upgrading dependencies
 - :arrow_down: When downgrading dependencies
 - :minidisc: When backing up data
+
+## Usage
+
+The usage of questions and lists in this repository is free for educational purposes and should not be marketed. Enjoy it!!!
