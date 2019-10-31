@@ -47,7 +47,7 @@ Use these icons at the beginning of your commit phrase to help verify the type o
 - :bug: When fixing a problem
 - :fire: When removing code or files
 - :green_heart: When fixing Continuous Integration issues
-- :White_check_mark: When adding tests
+- :white_check_mark: When adding tests
 - :lock: When dealing with security
 - :arrow_up: When upgrading dependencies
 - :arrow_down: When downgrading dependencies
