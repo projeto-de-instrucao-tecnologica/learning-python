@@ -56,3 +56,11 @@ Use these icons at the beginning of your commit phrase to help verify the type o
 ## Usage
 
 The usage of questions and lists in this repository is free for educational purposes and should not be marketed. Enjoy it!!!
+
+### Collab
+
+You can use Google Colab free tier to open the questions and lists to apply them to anyone or solve them by yourself.
+
+Just go to [Colab](https://colab.research.google.com) and open the file with the desired question, either via GitHub directly or downloading the file and importing it into the tool.
+
+Remember that you must have a Google account and you can download files or save them to Drive after changes and solutions.
