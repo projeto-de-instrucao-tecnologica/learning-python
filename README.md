@@ -64,3 +64,15 @@ You can use Google Colab free tier to open the questions and lists to apply them
 Just go to [Colab](https://colab.research.google.com) and open the file with the desired question, either via GitHub directly or downloading the file and importing it into the tool.
 
 Remember that you must have a Google account and you can download files or save them to Drive after changes and solutions.
+
+### Docker Environment
+
+You can use a docker image to open the questions and lists to apply them to anyone or solve them by yourself.
+
+Just download the docker on your machine and use the this [jupyer-image](https://hub.docker.com/r/jupyter/datascience-notebook/) to run the required python notebook environment, mapping the volume where the questions/lists lie.
+
+```
+docker run --rm -e JUPYTER_ENABLE_LAB=yes -v $(pwd):/home/jovyan/work -p 8888:8888 --name jupyterlab jupyter/datascience-notebook
+```
+
+Run the command above in the question files folder to upload jupyter-notebook on port 8888 and access them through a browser to solve or edit them as you wish.
