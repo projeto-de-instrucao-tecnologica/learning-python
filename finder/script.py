@@ -20,6 +20,11 @@ CONFIG = {
         "choices": ["single questions", "question lists"],
         "validation": lambda a: True if len(a) else "Should select at least one option"
     },
+    "DIFFICULTY_SEARCH_TYPE": {
+        "message": "Select the lists/questions difficulty you want to search.",
+        "choices": ["baby", "basic", "intermediary", "advanced", "master"],
+        "validation": lambda a: True if len(a) else "Should select at least one option"
+    },
     "KEY_WORD_SEARCH": {
         "message": "Enter the keyword to be searched for:",
         "validation": lambda a: True if len(a) >= 3 else "Should write at least a 3 chars word"
@@ -34,6 +39,13 @@ def get_main_search_type():
             message=CONFIG["MAIN_SEARCH_TYPE"]["message"],
             choices=CONFIG["MAIN_SEARCH_TYPE"]["choices"],
             validate=CONFIG["MAIN_SEARCH_TYPE"]["validation"]
+        ).ask()
+
+def get_difficulty_search_type():
+    return questionary.checkbox(
+            message=CONFIG["DIFFICULTY_SEARCH_TYPE"]["message"],
+            choices=CONFIG["DIFFICULTY_SEARCH_TYPE"]["choices"],
+            validate=CONFIG["DIFFICULTY_SEARCH_TYPE"]["validation"]
         ).ask()
 
 def get_search_key_word():
@@ -76,6 +88,8 @@ if __name__ == "__main__":
     while keep_searching:
 
         selected_main_search_options = get_main_search_type()
+
+        selected_difficulty_search_options = get_difficulty_search_type()
 
         search_key_word = get_search_key_word()
 
