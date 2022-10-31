@@ -78,3 +78,16 @@ docker run --rm -e JUPYTER_ENABLE_LAB=yes -v $(pwd):/home/jovyan/work -p 8888:88
 ```
 
 Run the command above in the question files folder to upload jupyter-notebook on port 8888 and access them through a browser to solve or edit them as you wish.
+
+### Finder
+
+You can search for questions and lists using the finder script created on [finder-folder](https://github.com/projeto-de-instrucao-tecnologica/learning-python/tree/master/finder). Execute and usage it is simple:
+
+- Use Python 3.9 version or higher
+- Install the dependencies with: ```pip install -r requirements.txt```
+- Execute the script with command: ```python finder/script.py```
+- The script is self explanatory, so the interaction with it is very simple:
+    - Choose whether to search lists, questions, or both
+    - Choose the difficulty of the questions/lists you want to find - you can select as many as you like
+    - Enter the keyword you want to use as a filter - if you enter no word, no word filter will be applied, bringing all results based on previous filters
+    - You can perform as many searches as you like
