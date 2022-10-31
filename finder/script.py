@@ -1,4 +1,5 @@
 from email import message
+from operator import le
 from tkinter import SINGLE
 import questionary # Doc: https://pypi.org/project/questionary/
 import os
@@ -9,7 +10,7 @@ WELCOME_MESSAGE = "Welcome to Questions finder! 💡"
 WELCOME_STYLE = "bold italic"
 SINGLE_QUESTIONS_FOLDER_NAME = "single_questions"
 LISTS_FOLDER_NAME = "lists"
-SEARCH_RESULT_SUCCESS_MESSAGE = "🔥 Search Results:"
+SEARCH_RESULT_SUCCESS_MESSAGE = "🔥 Search Results"
 SEARCH_RESULT_SUCCESS_STYLE = "bold italic fg:green"
 SEARCH_RESULT_FAIL_MESSAGE = "🐛 No results found"
 SEARCH_RESULT_FAIL_STYLE = "bold italic fg:red"
@@ -27,7 +28,7 @@ CONFIG = {
     },
     "KEY_WORD_SEARCH": {
         "message": "Enter the keyword to be searched for:",
-        "validation": lambda a: True if len(a) >= 3 else "Should write at least a 3 chars word"
+        "validation": lambda a: True if (len(a) >= 3 or len(a) == 0 ) else "Should write at least a 3 chars word or Nothing"
     }
 }
 
@@ -54,6 +55,9 @@ def get_search_key_word():
             validate=CONFIG["KEY_WORD_SEARCH"]["validation"]
         ).ask()
 
+def _mount_difficulty_file_pattern(difficulty_option):
+    return "_" + difficulty_option + ".ipynb"
+
 def _get_search_target_names(main_search_options):
     all_names = []
 
@@ -64,15 +68,33 @@ def _get_search_target_names(main_search_options):
 
     return all_names
 
-def perform_search(main_search_options, key_word):
+def _filter_target_names_by_difficulty(all_names, difficulty_search_options):
+    if len(difficulty_search_options) == len(CONFIG["DIFFICULTY_SEARCH_TYPE"]["choices"]):
+        return all_names
+    else:
+        filtered_names = []
+        for name in all_names:
+            for difficulty_option in difficulty_search_options:
+                if _mount_difficulty_file_pattern(difficulty_option) in name:
+                    filtered_names.append(name)
+                    break
+        return filtered_names
+
+def _apply_key_word_filter(names, key_word):
+    if len(key_word) == 0:
+        return names
+    else:
+        return [name for name in names if key_word in name]
+
+def perform_search(main_search_options, difficulty_search_options, key_word):
     all_names = _get_search_target_names(main_search_options)
-    # TODO Perform difficulty filter
-    search_result = [name for name in all_names if key_word in name]
+    filtered_names_by_difficulty = _filter_target_names_by_difficulty(all_names, difficulty_search_options)
+    search_result = _apply_key_word_filter(filtered_names_by_difficulty, key_word)
     return search_result
 
 def show_search_result(search_result):
     if search_result:
-        questionary.print(text=SEARCH_RESULT_SUCCESS_MESSAGE, style=SEARCH_RESULT_SUCCESS_STYLE)
+        questionary.print(text=SEARCH_RESULT_SUCCESS_MESSAGE + " [{}]:".format(len(search_result)), style=SEARCH_RESULT_SUCCESS_STYLE)
         pprint.pprint(search_result)
     else:
         questionary.print(text=SEARCH_RESULT_FAIL_MESSAGE, style=SEARCH_RESULT_FAIL_STYLE)
@@ -93,7 +115,7 @@ if __name__ == "__main__":
 
         search_key_word = get_search_key_word()
 
-        result = perform_search(selected_main_search_options, search_key_word)
+        result = perform_search(selected_main_search_options, selected_difficulty_search_options, search_key_word)
 
         show_search_result(result)
 
