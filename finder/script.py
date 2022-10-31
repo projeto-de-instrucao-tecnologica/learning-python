@@ -9,6 +9,11 @@ WELCOME_MESSAGE = "Welcome to Questions finder! 💡"
 WELCOME_STYLE = "bold italic"
 SINGLE_QUESTIONS_FOLDER_NAME = "single_questions"
 LISTS_FOLDER_NAME = "lists"
+SEARCH_RESULT_SUCCESS_MESSAGE = "🔥 Search Results:"
+SEARCH_RESULT_SUCCESS_STYLE = "bold italic fg:green"
+SEARCH_RESULT_FAIL_MESSAGE = "🐛 No results found"
+SEARCH_RESULT_FAIL_STYLE = "bold italic fg:red"
+KEEP_SEARCHING_MESSAGE= "Do you want to keep searching?"
 CONFIG = {
     "MAIN_SEARCH_TYPE": {
         "message": "Select what you want to search.",
@@ -53,6 +58,16 @@ def perform_search(main_search_options, key_word):
     search_result = [name for name in all_names if key_word in name]
     return search_result
 
+def show_search_result(search_result):
+    if search_result:
+        questionary.print(text=SEARCH_RESULT_SUCCESS_MESSAGE, style=SEARCH_RESULT_SUCCESS_STYLE)
+        pprint.pprint(search_result)
+    else:
+        questionary.print(text=SEARCH_RESULT_FAIL_MESSAGE, style=SEARCH_RESULT_FAIL_STYLE)
+
+def get_keep_searching():
+    return questionary.confirm(message=KEEP_SEARCHING_MESSAGE).ask()
+
 if __name__ == "__main__":
     welcome()
 
@@ -66,10 +81,6 @@ if __name__ == "__main__":
 
         result = perform_search(selected_main_search_options, search_key_word)
 
-        if result:
-            questionary.print("🔥 Search Results:", style="bold italic fg:green")
-            pprint.pprint(result)
-        else:
-            questionary.print("🐛 No results found", style="bold italic fg:red")
+        show_search_result(result)
 
-        keep_searching = questionary.confirm("Do you want to keep searching?").ask()
+        keep_searching = get_keep_searching()
