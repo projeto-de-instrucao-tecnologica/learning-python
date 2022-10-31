@@ -18,6 +18,8 @@ Lists and questions must be self-correcting, that is, they must contain assertat
 
 You can create questions and lists in English or Portuguese, but we prefer it to be in English (We accept Pull Requests for English translation :blush:).
 
+Be careful :warning: when creating questions and lists to don't create duplicate ones. In order to help with this, a script was created to find questions and lists from a keyword and some filters, to know more check the Usage->Finder topic of this README.
+
 ### Structure
 
 For **Lists** and **questions** respectively, do you have to create one with this name pattern:
